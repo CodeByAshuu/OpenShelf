@@ -14,18 +14,18 @@ export default function App() {
   return (
     <Router>
       <Navbar />
-      <main className="min-h-[80vh] container mx-auto p-4">
+      <main className="pt-24 min-h-screen bg-white text-black">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Bookstore" element={<Bookstore />} />
-          <Route path="/Events" element={<Events />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/bookstore" element={<Bookstore />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> Uncomment if Footer is implemented */}
     </Router>
   );
 }
