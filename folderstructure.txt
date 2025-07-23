@@ -1,0 +1,34 @@
+ebook-downloader/
+├── client/                  # Frontend (React + Vite + Tailwind)
+│   ├── public/
+│   └── src/
+│       ├── assets/          # Images, logos, etc.
+│       ├── components/      # Reusable UI components (Navbar, Card, etc.)
+│       ├── pages/           # Page components (Home, Login, Signup, Dashboard)
+│       ├── routes/          # Route definitions (optional)
+│       ├── services/        # API calls using axios
+│       ├── context/         # Auth context or global state
+│       ├── App.jsx
+│       └── main.jsx
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── index.css
+│   └── vite.config.js
+│
+├── server/                  # Backend (Express + MongoDB)
+│   ├── config/
+│   │   └── db.js            # MongoDB connection setup
+│   ├── controllers/         # Controller functions for routes
+│   ├── models/              # Mongoose models (User, Ebook)
+│   ├── routes/              # Express routes
+│   │   ├── authRoutes.js
+│   │   └── ebookRoutes.js
+│   ├── middleware/
+│   │   └── auth.js          # JWT auth middleware
+│   ├── uploads/             # (Optional) if storing ebook files
+│   ├── .env
+│   ├── server.js            # Entry point
+│   └── package.json
+│
+├── README.md
+└── .gitignore
