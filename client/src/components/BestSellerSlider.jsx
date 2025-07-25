@@ -39,7 +39,7 @@ export default function BestSellerSlider() {
           style={{ width: '`100%', height: '320px', minWidth: '1400px' }}
         ></div>
         {/* Slider Section with Dark Background */}
-        <div className="relative z-10">
+        <div className="relative z-10 mb-10">
           <div className="relative">
             {/* Scrollable Row */}
             <div
@@ -50,8 +50,8 @@ export default function BestSellerSlider() {
               {books.map((book, idx) => (
                 <div
                   key={idx}
-                  className="relative flex-shrink-0 w-48 md:w-56 rounded-xl shadow-lg overflow-visible group snap-center transition-transform duration-300 hover:-translate-y-2"
-                  style={{ minWidth: '12rem', maxWidth: '14rem' }}
+                  className="relative flex-shrink-0 w-36 md:w-40 lg:w-44 xl:w-48 2xl:w-52 rounded-xl overflow-visible group snap-center transition-transform duration-300 hover:-translate-y-2"
+                  style={{ minWidth: '5rem', maxWidth: '9rem' }}
                 >
                   {/* White box behind image */}
                   <div className="bg-white rounded-xl overflow-hidden relative">
@@ -64,18 +64,17 @@ export default function BestSellerSlider() {
                     <img
                       src={book.img}
                       alt={book.title}
-                      className="w-full h-64 object-cover object-center select-none"
+                      className="w-full h-40 object-cover object-center select-none"
                       draggable="false"
                     />
                   </div>
                   {/* Navy background for text and button */}
                   <div className="bg-[#12284C] w-full rounded-b-xl pb-6 pt-3 px-2 flex flex-col items-center relative">
-                    <div className="text-xs text-white font-semibold font-serif mb-1 uppercase tracking-wide">
+                    <div className="text-xs text-white font-semibold font-mono mb-1 uppercase tracking-wide text-center">
                       {book.author}
                     </div>
                     <div
-                      className="text-lg font-bold font-serif text-white text-center mb-2"
-                      style={{ fontFamily: 'Georgia, serif' }}
+                      className="text-lg font-medium tracking-wide font-serif text-white text-center mb-2"
                     >
                       {book.title}
                     </div>

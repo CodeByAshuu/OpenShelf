@@ -18,7 +18,7 @@ export default function Navbar() {
     <nav className="w-full bg-white fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-4.5 px-2 sm:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <div className="flex items-center select-none">
+        <Link to="/" className="flex items-center select-none">
           <div
             className="px-3 py-2 font-bold text-white text-lg tracking-widest"
             style={{ background: NAVY, fontFamily: 'Georgia, serif', letterSpacing: '0.1em' }}
@@ -31,7 +31,7 @@ export default function Navbar() {
           >
             Shelf
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
