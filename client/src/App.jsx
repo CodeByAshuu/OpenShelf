@@ -14,7 +14,7 @@ export default function App() {
   return (
     <Router>
       <Navbar />
-      <main className="pt-24 min-h-screen bg-white text-black">
+      <main className="pt-16 sm:pt-18 md:pt-20 lg:pt-24 min-h-screen bg-white text-black">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

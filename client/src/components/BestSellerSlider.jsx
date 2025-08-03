@@ -24,61 +24,61 @@ export default function BestSellerSlider() {
   const scrollRef = useRef(null);
 
   return (
-    <section className="w-full py-12 bg-white text-[#12284C] relative">
-      <div className="max-w-5xl mx-auto px-4 relative">
+    <section className="w-full py-8 sm:py-10 md:py-12 lg:py-16 bg-white text-[#12284C] relative">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 relative">
         {/* Title Section */}
-        <div className="text-center mb-20">
-          <div className="text-2xl tracking-tight font-semibold font-mono">OPEN. Shelf</div>
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mt-2 mb-1 tracking-wider" style={{ fontFamily: 'Georgia, serif' }}>
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <div className="text-lg sm:text-xl md:text-2xl tracking-tight font-semibold font-mono">OPEN. Shelf</div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-serif mt-2 mb-1 tracking-wider" style={{ fontFamily: 'Georgia, serif' }}>
             BESTSELLERS
           </h2>
         </div>
         {/* Large Navy Background Layer */}
         <div
           className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 z-0 rounded-3xl bg-[#12284C]"
-          style={{ width: '`100%', height: '320px', minWidth: '1400px' }}
+          style={{ width: '100%', height: '320px', minWidth: '1400px' }}
         ></div>
         {/* Slider Section with Dark Background */}
-        <div className="relative z-10 mb-10">
+        <div className="relative z-10 mb-8 sm:mb-10">
           <div className="relative">
             {/* Scrollable Row */}
             <div
               ref={scrollRef}
-              className="flex gap-6 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-hidden scrollbar-hide relative"
+              className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-hidden scrollbar-hide relative"
               style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch', msOverflowStyle: 'none', scrollbarWidth: 'none' }}
             >
               {books.map((book, idx) => (
                 <div
                   key={idx}
-                  className="relative flex-shrink-0 w-36 md:w-40 lg:w-44 xl:w-48 2xl:w-52 rounded-xl overflow-visible group snap-center transition-transform duration-300 hover:-translate-y-2"
-                  style={{ minWidth: '5rem', maxWidth: '9rem' }}
+                  className="relative flex-shrink-0 w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44 2xl:w-48 rounded-xl overflow-visible group snap-center transition-transform duration-300 hover:-translate-y-2"
+                  style={{ minWidth: '7rem', maxWidth: '12rem' }}
                 >
                   {/* White box behind image */}
                   <div className="bg-white rounded-xl overflow-hidden relative">
                     {/* Best Sale badge for first book */}
                     {idx === 0 && (
-                      <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg select-none">
+                      <span className="absolute top-1 sm:top-2 left-1 sm:left-2 bg-red-600 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full z-20 shadow-lg select-none">
                         Best Sale
                       </span>
                     )}
                     <img
                       src={book.img}
                       alt={book.title}
-                      className="w-full h-40 object-cover object-center select-none"
+                      className="w-full h-32 sm:h-36 md:h-40 lg:h-44 xl:h-48 object-cover object-center select-none"
                       draggable="false"
                     />
                   </div>
                   {/* Navy background for text and button */}
-                  <div className="bg-[#12284C] w-full rounded-b-xl pb-6 pt-3 px-2 flex flex-col items-center relative">
+                  <div className="bg-[#12284C] w-full rounded-b-xl pb-4 sm:pb-6 pt-2 sm:pt-3 px-2 flex flex-col items-center relative">
                     <div className="text-xs text-white font-semibold font-mono mb-1 uppercase tracking-wide text-center">
                       {book.author}
                     </div>
                     <div
-                      className="text-lg font-medium tracking-wide font-serif text-white text-center mb-2"
+                      className="text-sm sm:text-base md:text-lg font-medium tracking-wide font-serif text-white text-center mb-2"
                     >
                       {book.title}
                     </div>
-                    <button className="mt-2 px-4 py-2 bg-[#12284C] border border-white text-white rounded-lg font-serif text-sm font-semibold shadow transition-opacity transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
+                    <button className="mt-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#12284C] border border-white text-white rounded-lg font-serif text-xs sm:text-sm font-semibold shadow transition-opacity transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
                       Download
                     </button>
                   </div>

@@ -1,7 +1,18 @@
 @import "tailwindcss";
-/* Remove global centering and font overrides that conflict with Tailwind */
-/* Remove :root and body rules that set font-family, display: flex, place-items, etc. */
 
-/* Optionally, you can keep Tailwind's preflight by importing it in App.css or index.css */
+/* Global styles for better responsive behavior */
+* {
+  box-sizing: border-box;
+}
 
-/* Remove everything except possibly custom styles you want to keep */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
