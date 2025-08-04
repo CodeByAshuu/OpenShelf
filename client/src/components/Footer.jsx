@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
         {/* Column 1 */}
         <div>
-          <h2 className="text-xl font-normal mb-6 tracking-wider">Open Shelf</h2>
+          <h2 className="text-xl font-normal mb-6"><span className="uppercase tracking-tight">Open. &nbsp;</span><span className="tracking-widest">Shelf</span></h2>
           <div className="space-y-2 text-sm font-light">
             <div>500 Terry Francine St.</div>
             <div>San Francisco, CA 94158</div>

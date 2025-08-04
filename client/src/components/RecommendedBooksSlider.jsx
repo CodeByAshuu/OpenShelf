@@ -77,6 +77,7 @@ export default function RecommendedBooksSlider() {
             </div>
           ))}
         </div>
+        <div className="w-[20px] sm:w-[25px] md:w-[30px] h-[1px] bg-white/50 mx-auto my-6 sm:my-8" />
       </div>
       {/* Hide scrollbar for all browsers */}
       <style>{`
