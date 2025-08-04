@@ -63,7 +63,7 @@ export default function Footer() {
             <input
               id="newsletter-checkbox"
               type="checkbox"
-              className="accent-white mr-2"
+              className="accent-black mr-2"
             />
             <label htmlFor="newsletter-checkbox" className="text-xs font-light">
               Yes, subscribe me to your newsletter.*
