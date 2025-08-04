@@ -48,7 +48,7 @@ export default function BestSellerSlider() {
             {/* Scrollable Row */}
             <div
               ref={scrollRef}
-              className="flex justify-center gap-3 sm:gap-4 md:gap-6 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-hidden scrollbar-hide relative"
+              className="flex justify-start gap-3 sm:gap-4 md:gap-6 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-hidden scrollbar-hide relative"
               style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch', msOverflowStyle: 'none', scrollbarWidth: 'none' }}
             >
               {books.map((book, idx) => (
@@ -97,7 +97,7 @@ export default function BestSellerSlider() {
                       className="
                         mt-2 px-4 py-2 bg-[#12284C] border border-white text-white 
                         text-sm font-light font-serif shadow 
-                        transition-opacity transition-transform duration-300
+                        transition-opacity duration-300
                         rounded-none
                         hidden sm:block opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2
                       ">
