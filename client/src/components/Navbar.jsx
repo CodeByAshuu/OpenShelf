@@ -16,25 +16,26 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-white fixed top-0 left-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between h-16 sm:h-18 md:h-20">
+      <div className="w-full flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-8 lg:px-16 xl:px-20">
         {/* Logo */}
         <Link to="/" className="flex items-center select-none">
           <div
-            className="px-2 sm:px-3 py-1.5 sm:py-2 font-bold text-white text-sm sm:text-base md:text-lg tracking-widest"
+            className="px-3 py-2 font-bold text-white text-base md:text-lg tracking-widest"
             style={{ background: NAVY, fontFamily: 'Georgia, serif', letterSpacing: '0.1em' }}
           >
             OPEN.
           </div>
           <div
-            className="px-2 sm:px-3 py-1 sm:py-1.5 border-2 sm:border-3 md:border-4 text-sm sm:text-base md:text-lg font-serif tracking-widest uppercase"
-            style={{ borderColor: NAVY, color: NAVY, fontFamily: 'Georgia, serif', fontWeight: 500 }}
+            className="px-3 py-2 border-4 text-base md:text-xl font-serif tracking-widest uppercase leading-none"
+            style={{ borderColor: NAVY, color: NAVY, fontFamily: 'Georgia, serif', fontWeight: 500 , letterSpacing: '0.3em'}}
           >
             Shelf
           </div>
         </Link>
 
+
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8 ml-auto">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -53,12 +54,12 @@ export default function Navbar() {
             <FaUser className="text-lg sm:text-xl" />
             <span>Log In</span>
           </Link>
-          <Link
+          {/* <Link
             to="/cart"
             className="ml-2 hover:text-blue-900 transition text-[color:#00204d]"
           >
             <FaShoppingCart className="text-lg sm:text-xl" />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Hamburger Icon */}
