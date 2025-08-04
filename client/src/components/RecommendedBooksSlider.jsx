@@ -70,7 +70,7 @@ export default function RecommendedBooksSlider() {
                 <div className="text-white text-xs sm:text-sm font-medium text-center mb-2 opacity-80">
                   {book.author}
                 </div>
-                <button className="mt-1 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 border border-white/30 text-white rounded-lg font-serif text-xs sm:text-sm font-semibold shadow transition-opacity duration-300 hover:bg-white/20">
+                <button className="mt-1 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 border border-white/30 text-white font-serif text-xs sm:text-sm font-semibold shadow transition-opacity duration-300 hover:bg-white/20">
                   Download
                 </button>
               </div>
