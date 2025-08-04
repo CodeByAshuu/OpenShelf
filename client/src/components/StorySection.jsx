@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function StorySection() {
   return (
-    <section className="w-full bg-[#12284C] py-12 sm:py-12 md:py-0 lg:py-0 px-4 sm:px-6 md:px-8">
+    <section className="w-full bg-[#12284C] py-12 sm:py-16 md:pb-20 lg:pb-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-4xl mx-auto text-center">
         {/* Large Text Section */}
         <div className="mb-4 sm:mb-6 md:mb-8">
