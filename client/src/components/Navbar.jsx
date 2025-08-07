@@ -4,6 +4,14 @@ import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 
 const NAVY = "#00204d";
 
+function handleScrollToEvents(e) {
+  e.preventDefault();
+  const section = document.getElementById('events');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 const navLinks = [
   { name: "Bookstore", to: "/bookstore" },
   { name: "Events", to: "/events" },
@@ -36,16 +44,28 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-6 lg:space-x-8 ml-auto">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.to}
-              className="text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
-              style={{ fontFamily: 'Georgia, serif' }}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.name === "Events" ? (
+              <a
+                key={link.name}
+                href="#events"
+                onClick={handleScrollToEvents}
+                className="text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
+                style={{ fontFamily: 'Georgia, serif' }}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                to={link.to}
+                className="text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
+                style={{ fontFamily: 'Georgia, serif' }}
+              >
+                {link.name}
+              </Link>
+            )
+          )}
           <Link
             to="/login"
             className="flex items-center space-x-1 sm:space-x-2 text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
@@ -76,17 +96,32 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-white shadow-lg fixed top-16 sm:top-18 md:top-20 left-0 w-full z-40 animate-fade-in">
           <div className="flex flex-col items-center py-4 sm:py-6 space-y-3 sm:space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.to}
-                className="text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"
-                style={{ fontFamily: 'Georgia, serif' }}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.name === "Events" ? (
+                <a
+                  key={link.name}
+                  href="#events"
+                  onClick={(e) => {
+                    handleScrollToEvents(e);
+                    setMenuOpen(false);
+                  }}
+                  className="text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"
+                  style={{ fontFamily: 'Georgia, serif' }}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.to}
+                  className="text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"
+                  style={{ fontFamily: 'Georgia, serif' }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
             <Link
               to="/login"
               className="flex items-center space-x-2 text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"

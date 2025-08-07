@@ -3,7 +3,7 @@ import b17 from '../assets/b17.png';
 
 export default function Events() {
   return (
-    <section id="book-launch" className="w-full bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
+    <section id="events" className="w-full bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Headings */}
         <div className="mb-8 text-center">
