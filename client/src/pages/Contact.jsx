@@ -8,6 +8,8 @@ import {
   // LucidePinterest as Pinterest,
 } from 'lucide-react';
 
+import { FaPinterest } from 'react-icons/fa';
+
 
 
 export default function Contact() {
@@ -88,9 +90,8 @@ export default function Contact() {
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Instagram className="text-[#12284C] hover:opacity-70 w-6 h-6" />
               </a>
-              {/* <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
-                <Pinterest className="text-[#12284C] hover:opacity-70 w-6 h-6" />
-              </a> */}
+              <FaPinterest className="w-6 h-6 fill-[#12284C]" />
+
             </div>
           </div>
 
