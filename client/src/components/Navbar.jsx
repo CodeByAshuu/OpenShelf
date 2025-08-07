@@ -44,8 +44,8 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center select-none">
           <div
-            className="px-3 py-2 font-bold text-white text-base md:text-lg tracking-widest"
-            style={{ background: NAVY, fontFamily: 'Georgia, serif', letterSpacing: '0.1em' }}
+            className="pl-3 py-2 font-extrabold text-white text-base md:text-lg tracking-widest font-mono"
+            style={{ background: NAVY, letterSpacing: '0.3em' }}
           >
             OPEN.
           </div>
