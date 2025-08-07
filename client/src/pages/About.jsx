@@ -34,11 +34,8 @@ export default function About() {
         {/* White Text Box - Overlaps both image and background, positioned to the left */}
         <div className="relative z-30 max-w-4xl mx-auto px-4 sm:px-6 md:px-8 pb-16 sm:pb-20 md:pb-24">
           <div 
-            className="bg-white border-16 border-[#12284C] p-6 sm:p-8 md:p-10 lg:p-12 max-w-2xl"
-            style={{
-              marginTop: '-40%',
-              marginLeft: '-20%'
-            }}
+            className="bg-white border-16 border-[#12284C] p-6 sm:p-8 md:p-10 lg:p-12 max-w-2xl 
+            mt-8 sm:-mt-[40%] ml-0 sm:ml-0 md:ml-[-20%]"
           >
             <div className="text-[#12284C] space-y-4 sm:space-y-6">
               <p className="text-sm sm:text-base md:text-lg leading-relaxed font-sans">
