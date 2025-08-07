@@ -16,9 +16,9 @@ export default function Events() {
           <div className="flex-1 w-full max-w-md">
             <div className="text-[#12284C]">
               <div className="text-base sm:text-lg font-mono mb-1">Introducing</div>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif mb-2" style={{ fontFamily: 'Georgia, serif' }}>The Future of Reading</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif mb-2" style={{ fontFamily: 'Georgia, serif' }}>The Land of Ailoo</div>
               <div className="text-base sm:text-lg font-mono mt-4 mb-1">By</div>
-              <div className="text-lg sm:text-xl font-semibold font-serif mb-4">Jane Doe</div>
+              <div className="text-lg sm:text-xl font-semibold font-serif mb-4">Mark Walker</div>
               <div className="text-base sm:text-lg font-mono mt-2 mb-1">When</div>
               <hr className="border-t-2 border-[#12284C] w-16 my-1" />
               <div className="text-md sm:text-lg font-serif mb-4">Jul 12, 2035, 7:00 PM</div>
