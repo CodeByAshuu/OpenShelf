@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import Footer from '../components/Footer';
 
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  // LucidePinterest as Pinterest,
+} from 'lucide-react';
+
+
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -65,9 +74,26 @@ export default function Contact() {
           ))}
           <div className="text-[#12284C] space-y-4">
             <h2 className="text-xl font-medium tracking-wider">Customer Service</h2>
-              <p>Tel<br />1-800-000-0000</p>
-              <p>Email<br />info@my-domain.com</p>
+            <p>Tel<br />1-800-000-0000</p>
+            <p>Email<br />info@my-domain.com</p>
+
+            {/* Social Media Icons */}
+            <div className="flex gap-4 pt-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <Facebook className="fill-[#12284C] hover:opacity-70 w-6 h-6 text-[#12284C]" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <Twitter className="fill-[#12284C] hover:opacity-70 w-6 h-6" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <Instagram className="text-[#12284C] hover:opacity-70 w-6 h-6" />
+              </a>
+              {/* <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                <Pinterest className="text-[#12284C] hover:opacity-70 w-6 h-6" />
+              </a> */}
+            </div>
           </div>
+
         </div>
 
         {/* Contact Form */}
