@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Bookstore from './pages/Bookstore';
-import Events from './pages/Events';
+import Events from './components/Events';
 import About from './pages/About';
 import Contact from './pages/Contact';
 

@@ -6,7 +6,6 @@ export default function StorySection() {
       <div className="max-w-4xl mx-auto text-center">
         {/* Large Text Section */}
         <div className="mb-4 sm:mb-6 md:mb-8">
-          
             <h2 className="text-white font-serif font-bold leading-snug tracking-wide text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-7xl" 
               style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
             <span className="block">THERE'S NO</span>
