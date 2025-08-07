@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 
 const NAVY = "#00204d";
-
-function handleScrollToEvents(e) {
-  e.preventDefault();
-  const section = document.getElementById('events');
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
-  }
-}
 
 const navLinks = [
   { name: "Bookstore", to: "/bookstore" },
@@ -21,6 +13,30 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  function handleScrollToEvents(e) {
+    e.preventDefault();
+    
+    // If not on home page, navigate to home first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const section = document.getElementById('events');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If already on home page, just scroll
+      const section = document.getElementById('events');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
 
   return (
     <nav className="w-full bg-white fixed top-0 left-0 z-50">
