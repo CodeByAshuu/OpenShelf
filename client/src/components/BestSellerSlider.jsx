@@ -88,7 +88,7 @@ export default function BestSellerSlider() {
                         text-xs sm:text-sm font-light font-serif shadow 
                         transition duration-300
                         rounded-none
-                        block sm:hidden
+                        block sm:hidden 
                       ">
                       Download
                     </button>
@@ -98,7 +98,7 @@ export default function BestSellerSlider() {
                         mt-2 px-4 py-2 bg-[#12284C] border border-white text-white 
                         text-sm font-light font-serif shadow 
                         transition-opacity duration-300
-                        rounded-none
+                        rounded-none w-full hover:bg-white hover:text-[#12284C]
                         hidden sm:block opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2
                       ">
                       Download
