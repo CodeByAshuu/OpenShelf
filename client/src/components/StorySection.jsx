@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 export default function StorySection() {
   return (
@@ -15,12 +16,14 @@ export default function StorySection() {
         </div>
         
         {/* Button Section */}
+        <Link to="/About">
         <div>
           <button className="bg-[#12284C] border-2 border-white text-white font-light px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 text-lg sm:text-xl md:text-base tracking-wide transition-all duration-300 hover:bg-white hover:text-[#12284C]"
                   style={{ fontFamily: 'Georgia, serif' }}>
             Read our Story
           </button>
         </div>
+        </Link>
       </div>
     </section>
   );
