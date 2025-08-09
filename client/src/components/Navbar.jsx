@@ -50,7 +50,7 @@ export default function Navbar() {
             OPEN.
           </div>
           <div
-            className="px-3 py-2 border-4 text-base md:text-xl font-serif tracking-widest uppercase leading-none"
+            className="px-3 py-2 border-4 text-base md:text-xl font-serif tracking-widest   leading-none"
             style={{ borderColor: NAVY, color: NAVY, fontFamily: 'Georgia, serif', fontWeight: 500 , letterSpacing: '0.3em'}}
           >
             Shelf
@@ -59,15 +59,15 @@ export default function Navbar() {
 
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-6 lg:space-x-8 ml-auto">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-10 ml-auto">
           {navLinks.map((link) =>
             link.name === "Events" ? (
               <a
                 key={link.name}
                 href="#events"
                 onClick={handleScrollToEvents}
-                className="text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
-                style={{ fontFamily: 'Georgia, serif' }}
+                className="text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#00204d]"
+                // style={{ fontFamily: 'Georgia, serif' }}
               >
                 {link.name}
               </a>
@@ -75,8 +75,8 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 to={link.to}
-                className="text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
-                style={{ fontFamily: 'Georgia, serif' }}
+                className="text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#00204d]"
+                // style={{ fontFamily: 'Georgia, serif' }}
               >
                 {link.name}
               </Link>
@@ -84,8 +84,8 @@ export default function Navbar() {
           )}
           <Link
             to="/login"
-            className="flex items-center space-x-1 sm:space-x-2 text-sm lg:text-base font-serif uppercase tracking-wider hover:text-blue-900 transition text-[color:#00204d]"
-            style={{ fontFamily: 'Georgia, serif' }}
+            className="flex items-center space-x-1 sm:space-x-2 text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#00204d]"
+            // style={{ fontFamily: 'Georgia, serif' }}
           >
             <FaUser className="text-lg sm:text-xl" />
             <span>Log In</span>
