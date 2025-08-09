@@ -100,7 +100,7 @@ export default function Navbar() {
 
         {/* Hamburger Icon */}
         <button
-          className="md:hidden flex items-center text-xl sm:text-2xl text-[color:#00204d] focus:outline-none"
+          className="md:hidden flex items-start text-xl sm:text-2xl text-[color:#00204d] focus:outline-none"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
@@ -108,10 +108,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full Screen */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg fixed top-16 sm:top-18 md:top-20 left-0 w-full z-40 animate-fade-in">
-          <div className="flex flex-col items-center py-4 sm:py-6 space-y-3 sm:space-y-4">
+        <div className="md:hidden fixed inset-0 top-16 sm:top-18 md:top-20 bg-white z-40 animate-fade-in">
+          <div className="flex flex-col items-start justify-start h-full py-8 space-y-2">
             {navLinks.map((link) =>
               link.name === "Events" ? (
                 <a
@@ -121,8 +121,8 @@ export default function Navbar() {
                     handleScrollToEvents(e);
                     setMenuOpen(false);
                   }}
-                  className="text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"
-                  style={{ fontFamily: 'Georgia, serif' }}
+                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#00204d] hover:text-blue-900 transition py-4 px-8"
+                  
                 >
                   {link.name}
                 </a>
@@ -130,8 +130,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.to}
-                  className="text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"
-                  style={{ fontFamily: 'Georgia, serif' }}
+                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#00204d] hover:text-blue-900 transition py-4 px-8"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.name}
@@ -140,20 +139,19 @@ export default function Navbar() {
             )}
             <Link
               to="/login"
-              className="flex items-center space-x-2 text-sm sm:text-base font-serif uppercase tracking-wider text-[color:#00204d] hover:text-blue-900 transition"
-              style={{ fontFamily: 'Georgia, serif' }}
+              className="flex items-center space-x-3 text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#00204d] hover:text-blue-900 transition py-4 px-8"
               onClick={() => setMenuOpen(false)}
             >
-              <FaUser className="text-lg sm:text-xl" />
+              <FaUser className="text-xl sm:text-2xl" />
               <span>Log In</span>
             </Link>
-            <Link
+            {/* <Link
               to="/cart"
-              className="hover:text-blue-900 transition text-[color:#00204d]"
+              className="hover:text-blue-900 transition text-[color:#00204d] py-4 px-8"
               onClick={() => setMenuOpen(false)}
             >
-              <FaShoppingCart className="text-lg sm:text-xl" />
-            </Link>
+              <FaShoppingCart className="text-xl sm:text-2xl" />
+            </Link> */}
           </div>
         </div>
       )}
