@@ -44,14 +44,14 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center select-none">
           <div
-            className="pl-3 py-2 font-extrabold text-white text-base md:text-lg tracking-widest font-mono"
-            style={{ background: NAVY, letterSpacing: '0.3em' }}
+            className="pl-3 py-2 font-bold text-white text-base md:text-lg tracking-widest font-sans"
+            style={{ background: '#12284C', letterSpacing: '0.2em'}}
           >
             OPEN.
           </div>
           <div
-            className="px-3 py-2 border-4 text-base md:text-xl font-serif tracking-widest   leading-none"
-            style={{ borderColor: NAVY, color: NAVY, fontFamily: 'Georgia, serif', fontWeight: 500 , letterSpacing: '0.3em'}}
+            className="px-3 py-2 border-4 text-base text-[#12284C] md:text-xl tracking-widest uppercase leading-none hover:bg-[#12284C] hover:text-white transition-colors duration-300"
+            style={{ borderColor: '#12284C', fontFamily: 'Georgia', fontWeight: 500 , letterSpacing: '0.5em'}}
           >
             Shelf
           </div>
