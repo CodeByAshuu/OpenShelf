@@ -1,24 +1,35 @@
 import React, { useRef } from 'react';
 
-import b1 from '../assets/b1.png';
-import b2 from '../assets/b2.png';
-import b3 from '../assets/b3.png';
-import b4 from '../assets/b4.png';
-import b5 from '../assets/b5.png';
-import b6 from '../assets/b6.png';
-import b7 from '../assets/b7.png';
-import b8 from '../assets/b8.png';
+import b1a from '../assets/b1a.avif';
+import b2a from '../assets/b2a.avif';
+import b3a from '../assets/b3a.avif';
+import b4a from '../assets/b4a.avif';
+import b5a from '../assets/b5a.avif';
+import b6a from '../assets/b6a.avif';
+import b7a from '../assets/b7a.avif';
+import b8a from '../assets/b8a.avif';
 
-const books = [
-  { img: b1, title: 'The Silent Patient', author: 'Alex Michaelides' },
-  { img: b2, title: 'Where the Crawdads Sing', author: 'Delia Owens' },
-  { img: b3, title: 'Educated', author: 'Tara Westover' },
-  { img: b4, title: 'Becoming', author: 'Michelle Obama' },
-  { img: b5, title: 'The Testaments', author: 'Margaret Atwood' },
-  { img: b6, title: 'Normal People', author: 'Sally Rooney' },
-  { img: b7, title: 'The Goldfinch', author: 'Donna Tartt' },
-  { img: b8, title: 'The Night Circus', author: 'Erin Morgenstern' },
-];
+// const books = [
+//   { img: b1, title: 'The Silent Patient', author: 'Alex Michaelides' },
+//   { img: b2, title: 'Where the Crawdads Sing', author: 'Delia Owens' },
+//   { img: b3, title: 'Educated', author: 'Tara Westover' },
+//   { img: b4, title: 'Becoming', author: 'Michelle Obama' },
+//   { img: b5, title: 'The Testaments', author: 'Margaret Atwood' },
+//   { img: b6, title: 'Normal People', author: 'Sally Rooney' },
+//   { img: b7, title: 'The Goldfinch', author: 'Donna Tartt' },
+//   { img: b8, title: 'The Night Circus', author: 'Erin Morgenstern' },
+// ];
+
+  const books = [
+    {img: b1a, title: "Art Station", author: "Anthony Young"},
+    {img: b2a, title: "Deep Work", author: "Cal Newport"},
+    {img: b3a, title: "Atomic Habits", author: "James Clear"},
+    {img: b4a, title: "The Subtle Art of Not Giving a F*ck"},
+    {img: b5a, title: "The Psychology of Money", author: "Mo"},
+    {img: b6a, title: "Rich Dad Poor Dad", author: "Robert Kku: "},
+    {img: b7a, title: "The 7 Habits of Highly Effective Peopory: "},
+    {img: b8a, title: "Think and Grow Rich", author: "Napoleku: "},
+  ];
 
 export default function BestSellerSlider() {
   const scrollRef = useRef(null);
@@ -54,11 +65,11 @@ export default function BestSellerSlider() {
               {books.map((book, idx) => (
                 <div
                   key={idx}
-                  className="relative flex-shrink-0 w-full sm:w-[220px] rounded-xl overflow-visible group snap-center transition-transform duration-300 hover:-translate-y-2"
+                  className="relative flex-shrink-0 w-[480px] sm:w-[220px] rounded-xl overflow-visible group snap-center transition-transform duration-300 hover:-translate-y-2"
                   style={{ minWidth: '7rem', maxWidth: '12rem' }}
                 >
                   {/* White box behind image */}
-                  <div className="bg-white overflow-hidden relative">
+                  <div className="bg-white relative">
                     {/* Best Sale badge for first book */}
                     {idx === 0 && (
                       <span className="absolute top-1 sm:top-2 left-1 sm:left-2 bg-red-600 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full z-20 shadow-lg select-none">
@@ -68,19 +79,19 @@ export default function BestSellerSlider() {
                     <img
                       src={book.img}
                       alt={book.title}
-                      className="w-full h-32 sm:h-36 md:h-40 lg:h-44 xl:h-48 object-cover object-center select-none"
+                      className="w-full h-52 sm:h-36 md:h-40 lg:h-44 xl:h-48 object-cover object-center select-none"
                       draggable="false"
                     />
                   </div>
                   {/* Navy background for text and button */}
                   <div className="w-full rounded-b-xl pb-4 sm:pb-6 pt-2 sm:pt-3 px-2 flex flex-col items-center relative">
-                    <div className="text-xs text-white font-semibold font-mono mb-1 uppercase tracking-wide text-center">
-                      {book.author}
-                    </div>
                     <div
-                      className="text-sm sm:text-base md:text-lg font-medium tracking-wide font-serif text-white text-center mb-2"
+                      className="text-base sm:text-lg md:text-xl font-light tracking-tighter font-sans text-white text-center mb-2"
                     >
                       {book.title}
+                    </div>
+                    <div className="text-sm text-gray-50 mb-1 font-extralight tracking-wide text-center">
+                      {book.author}
                     </div>
                     <button
                       className="
