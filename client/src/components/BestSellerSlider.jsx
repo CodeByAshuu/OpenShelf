@@ -87,7 +87,7 @@ export default function BestSellerSlider() {
                         mt-2 px-3 py-1.5 bg-[#12284C] border border-white text-white 
                         text-xs sm:text-sm font-light font-serif shadow 
                         transition duration-300
-                        rounded-none
+                        rounded-none w-full
                         block sm:hidden 
                       ">
                       Download
