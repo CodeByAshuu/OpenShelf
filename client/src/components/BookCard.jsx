@@ -10,7 +10,7 @@ export default function BookCard({ id, image, title, author }) {
 
   return (
     <div 
-      className="w-60 group overflow-hidden transition-all duration-300 my-24 sm:my-2 mx-auto cursor-pointer hover:shadow-lg"
+      className="w-60 group overflow-hidden transition-all duration-300 my-24 sm:my-2 mx-auto cursor-pointer"
       onClick={handleCardClick}
     >
       {/* Top Row: Image with grey background */}
