@@ -34,7 +34,7 @@ export default function BookCard({ id, image, title, author, sku }) {
           />
           
           {/* Quick View Link - Appears on hover */}
-          <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+          <div className="absolute bottom-0 left-0 right-0 bg-[#FFFFFFBF] bg-opacity-100 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
             <button
               onClick={handleQuickViewClick}
               className="w-full py-3 text-black font-light text-sm hover:bg-opacity-100 transition-all duration-200"
