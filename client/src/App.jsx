@@ -9,6 +9,7 @@ import Bookstore from './pages/Bookstore';
 import Events from './components/Events';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import BookDetail from './pages/BookDetail';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/bookstore" element={<Bookstore />} />
+          <Route path="/book/:id" element={<BookDetail />} />
           <Route path="/events" element={<Events />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

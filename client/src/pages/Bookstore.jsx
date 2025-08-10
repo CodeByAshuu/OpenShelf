@@ -137,6 +137,7 @@ export default function BookStore() {
               {filteredBooks.map((book) => (
                 <BookCard
                   key={book.id}
+                  id={book.id}
                   image={book.image}
                   title={book.title}
                   author={book.author}
@@ -150,6 +151,7 @@ export default function BookStore() {
               {filteredBooks.map((book) => (
                 <BookCard
                   key={book.id}
+                  id={book.id}
                   image={book.image}
                   title={book.title}
                   author={book.author}
