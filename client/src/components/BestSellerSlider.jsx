@@ -22,13 +22,13 @@ import b8a from '../assets/b8a.avif';
 
   const books = [
     {img: b1a, title: "Art Station", author: "Anthony Young"},
-    {img: b2a, title: "Deep Work", author: "Cal Newport"},
-    {img: b3a, title: "Atomic Habits", author: "James Clear"},
-    {img: b4a, title: "The Subtle Art of Not Giving a F*ck"},
-    {img: b5a, title: "The Psychology of Money", author: "Mo"},
-    {img: b6a, title: "Rich Dad Poor Dad", author: "Robert Kku: "},
-    {img: b7a, title: "The 7 Habits of Highly Effective Peopory: "},
-    {img: b8a, title: "Think and Grow Rich", author: "Napoleku: "},
+    {img: b2a, title: "Kahlo", author: "Wyell Lee"},
+    {img: b3a, title: "Design in the 21st Century", author: "Paul Anderson"},
+    {img: b4a, title: "The Missing", author: "Paul Anderson"},
+    {img: b5a, title: "Hiking in the Alphs", author: "Deena Sheif"},
+    {img: b6a, title: "Spoken Word", author: "Lee Anne Hale"},
+    {img: b7a, title: "Origami", author: "Lucy Hall"},
+    {img: b8a, title: "Looking for Nini", author: "Mary Chan"},
   ];
 
 export default function BestSellerSlider() {
