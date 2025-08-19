@@ -111,7 +111,7 @@ export default function Navbar() {
       {/* Mobile Menu - Full Screen */}
       {menuOpen && (
         <div className="md:hidden fixed inset-0 top-16 sm:top-18 md:top-20 bg-white z-40 animate-fade-in">
-          <div className="flex flex-col items-start justify-start h-full py-8 space-y-2">
+          <div className="flex flex-col items-start justify-start h-full py-12 sm:py-0 md:py-2 space-y-0">
             {navLinks.map((link) =>
               link.name === "Events" ? (
                 <a
