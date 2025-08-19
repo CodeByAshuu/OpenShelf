@@ -15,8 +15,8 @@ export default function MainBanner() {
         
         {/* Overlay for text - centered on mobile, left-aligned on desktop */}
         <div className="absolute inset-0 flex items-center justify-start pointer-events-none">
-          <div className="relative z-10 flex flex-col items-start justify-center h-full px-5 sm:px-8 md:px-16 lg:px-28 max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl pointer-events-auto">
-            <h1 className="text-[#1A2B4C] font-serif text-4xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-[84px] font-extrabold leading-tight tracking-wide m-0 sm:text-left opacity-0 animate-fadeInUp py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-6 md:px-8 lg:px-10 rounded-2xl sm:rounded-r-3xl md:rounded-r-4xl shadow-none text-left"
+          <div className="relative z-10 flex flex-col items-start h-full px-5 sm:py-4 sm:px-8 md:px-16 lg:px-28 max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl pointer-events-auto">
+            <h1 className="text-[#1A2B4C] font-serif text-4xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-[84px] font-extrabold leading-tight tracking-wide m-0 sm:text-left opacity-0 animate-fadeInUp py-16 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-6 md:px-8 lg:px-10 rounded-2xl sm:rounded-r-3xl md:rounded-r-4xl shadow-none text-left"
                 style={{ 
                   fontFamily: 'Playfair Display, Georgia, serif',
                   animation: 'fadeInUp 1s 0.2s forwards'
