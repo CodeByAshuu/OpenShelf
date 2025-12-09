@@ -12,6 +12,11 @@ app.use(express.json());
 const userRoutes = require('./routes/userRoutes');
 const ebookRoutes = require('./routes/ebookRoutes');
 
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.log(err));
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });

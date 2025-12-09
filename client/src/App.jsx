@@ -10,6 +10,7 @@ import Events from './components/Events';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import BookDetail from './pages/BookDetail';
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
       {/* <Footer /> Uncomment if Footer is implemented */}
