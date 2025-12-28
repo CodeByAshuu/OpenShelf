@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Global styles for better responsive behavior */
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -15,4 +15,4 @@ html, body {
 #root {
   width: 100%;
   min-height: 100vh;
-}
+} */
