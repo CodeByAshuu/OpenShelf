@@ -11,6 +11,10 @@ app.use(express.json());
 
 const userRoutes = require('./routes/userRoutes');
 const ebookRoutes = require('./routes/ebookRoutes');
+const path = require('path');
+
+// Serve static files
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)

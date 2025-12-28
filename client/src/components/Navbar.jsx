@@ -16,9 +16,18 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+    setMenuOpen(false);
+  };
+
   function handleScrollToEvents(e) {
     e.preventDefault();
-    
+
     // If not on home page, navigate to home first
     if (location.pathname !== '/') {
       navigate('/');
@@ -45,13 +54,13 @@ export default function Navbar() {
         <Link to="/" className="flex items-center select-none">
           <div
             className="pl-3 py-2 font-bold text-white text-base md:text-lg tracking-widest font-sans"
-            style={{ background: '#12284C', letterSpacing: '0.2em'}}
+            style={{ background: '#12284C', letterSpacing: '0.2em' }}
           >
             OPEN.
           </div>
           <div
             className="px-3 py-2 border-4 text-base text-[#12284C] md:text-xl tracking-widest uppercase leading-none hover:bg-[#12284C] hover:text-white transition-colors duration-300"
-            style={{ borderColor: '#12284C', fontFamily: 'Georgia', fontWeight: 500 , letterSpacing: '0.5em'}}
+            style={{ borderColor: '#12284C', fontFamily: 'Georgia', fontWeight: 500, letterSpacing: '0.5em' }}
           >
             Shelf
           </div>
@@ -66,8 +75,7 @@ export default function Navbar() {
                 key={link.name}
                 href="#events"
                 onClick={handleScrollToEvents}
-                className="text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#00204d]"
-                // style={{ fontFamily: 'Georgia, serif' }}
+                className="text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#12284C]"
               >
                 {link.name}
               </a>
@@ -75,32 +83,43 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 to={link.to}
-                className="text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#00204d]"
-                // style={{ fontFamily: 'Georgia, serif' }}
+                className="text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#12284C]"
               >
                 {link.name}
               </Link>
             )
           )}
-          <Link
-            to="/login"
-            className="flex items-center space-x-1 sm:space-x-2 text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#00204d]"
-            // style={{ fontFamily: 'Georgia, serif' }}
-          >
-            <FaUser className="text-lg sm:text-xl" />
-            <span>Log In</span>
-          </Link>
-          {/* <Link
-            to="/cart"
-            className="ml-2 hover:text-blue-900 transition text-[color:#00204d]"
-          >
-            <FaShoppingCart className="text-lg sm:text-xl" />
-          </Link> */}
+
+          {user ? (
+            <div className="flex items-center space-x-6">
+              <Link
+                to="/profile"
+                className="flex items-center space-x-1 sm:space-x-2 text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#12284C]"
+              >
+                <FaUser className="text-lg sm:text-xl" />
+                <span className="font-light">{user.name.split(' ')[0]}</span>
+              </Link>
+              {/* <button
+                onClick={handleLogout}
+                className="text-base lg:text-lg font-mono tracking-tight text-red-600 hover:text-red-800 transition uppercase font-bold"
+              >
+                Logout
+              </button> */}
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="flex items-center space-x-1 sm:space-x-2 text-base lg:text-lg font-mono tracking-tight hover:text-blue-900 transition text-[color:#12284C]"
+            >
+              <FaUser className="text-lg sm:text-xl" />
+              <span>Log In</span>
+            </Link>
+          )}
         </div>
 
         {/* Hamburger Icon */}
         <button
-          className="md:hidden flex items-start text-xl sm:text-2xl text-[color:#00204d] focus:outline-none"
+          className="md:hidden flex items-start text-xl sm:text-2xl text-[color:#12284C] focus:outline-none"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
@@ -121,8 +140,8 @@ export default function Navbar() {
                     handleScrollToEvents(e);
                     setMenuOpen(false);
                   }}
-                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#00204d] hover:text-blue-900 transition py-4 px-8"
-                  
+                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#12284C] hover:text-blue-900 transition py-4 px-8"
+
                 >
                   {link.name}
                 </a>
@@ -130,28 +149,41 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.to}
-                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#00204d] hover:text-blue-900 transition py-4 px-8"
+                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#12284C] hover:text-blue-900 transition py-4 px-8"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               )
             )}
-            <Link
-              to="/login"
-              className="flex items-center space-x-3 text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#00204d] hover:text-blue-900 transition py-4 px-8"
-              onClick={() => setMenuOpen(false)}
-            >
-              <FaUser className="text-xl sm:text-2xl" />
-              <span>Log In</span>
-            </Link>
-            {/* <Link
-              to="/cart"
-              className="hover:text-blue-900 transition text-[color:#00204d] py-4 px-8"
-              onClick={() => setMenuOpen(false)}
-            >
-              <FaShoppingCart className="text-xl sm:text-2xl" />
-            </Link> */}
+
+            {user ? (
+              <>
+                <Link
+                  to="/profile"
+                  className="flex items-center space-x-3 text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#12284C] hover:text-blue-900 transition py-4 px-8"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <FaUser className="text-xl sm:text-2xl" />
+                  <span>{user.name}</span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="text-2xl sm:text-3xl font-mono font-bold tracking-tighter text--600 hover:text-[#12284C]] transition py-4 px-8 text-left w-full"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center space-x-3 text-2xl sm:text-3xl font-mono font-bold tracking-tighter text-[color:#12284C] hover:text-blue-900 transition py-4 px-8"
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaUser className="text-xl sm:text-2xl" />
+                <span>Log In</span>
+              </Link>
+            )}
           </div>
         </div>
       )}

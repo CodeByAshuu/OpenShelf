@@ -11,6 +11,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import BookDetail from './pages/BookDetail';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
       {/* <Footer /> Uncomment if Footer is implemented */}

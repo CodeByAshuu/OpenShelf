@@ -72,6 +72,65 @@ const loginUser = async (req, res) => {
     }
 };
 
+// @desc    Get user profile
+// @route   GET /api/users/profile
+// @access  Private
+const getUserProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+
+        if (user) {
+            res.json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                bio: user.bio,
+                profileImage: user.profileImage,
+                createdAt: user.createdAt,
+            });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+// @desc    Update user profile
+// @route   PUT /api/users/profile
+// @access  Private
+const updateUserProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+
+        if (user) {
+            user.name = req.body.name || user.name;
+            user.bio = req.body.bio !== undefined ? req.body.bio : user.bio;
+
+            if (req.body.profileImage) {
+                user.profileImage = req.body.profileImage;
+            }
+
+            const updatedUser = await user.save();
+
+            res.json({
+                _id: updatedUser._id,
+                name: updatedUser.name,
+                email: updatedUser.email,
+                bio: updatedUser.bio,
+                profileImage: updatedUser.profileImage,
+                message: 'Profile updated successfully'
+            });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
 // Generate JWT
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -82,4 +141,6 @@ const generateToken = (id) => {
 module.exports = {
     registerUser,
     loginUser,
+    getUserProfile,
+    updateUserProfile,
 };
