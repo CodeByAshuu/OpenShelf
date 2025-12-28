@@ -28,7 +28,7 @@ export default function Login() {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data));
-        navigate('/dashboard');
+        navigate('/');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid credentials');
@@ -36,7 +36,7 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="w-full bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white border-[16px] border-[#12284C] p-8 sm:p-12 relative z-10 shadow-xl">
 
         {/* Header Section */}

@@ -11,10 +11,12 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import BookDetail from './pages/BookDetail';
 import Dashboard from './pages/Dashboard';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <main className="pt-16 sm:pt-18 md:pt-20 lg:pt-24 min-h-screen bg-white text-black">
         <Routes>

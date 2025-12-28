@@ -31,15 +31,15 @@ export default function Signup() {
     try {
       await axios.post('http://localhost:5000/api/users/register', formData);
       // On success
-      navigate('/login');
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
   };
 
   return (
-    <div className="w-full min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white border-[16px] border-[#12284C] p-8 sm:p-12 relative z-10 shadow-xl">
+    <div className="w-full bg-white flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white border-[16px] border-[#12284C] p-8 sm:p-7 relative z-10 shadow-xl">
 
         {/* Header Section */}
         <div className="text-center mb-10">
