@@ -1,0 +1,54 @@
+services:
+  # ── Backend ────────────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: openshelf-backend
+    restart: unless-stopped
+    env_file:
+      - ./server/.env          # real secrets – never committed
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "5000:5000"
+    volumes:
+      # Persist uploaded profile images across restarts
+      - uploads_data:/app/uploads
+    networks:
+      - openshelf-net
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # ── Frontend ───────────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        # Vite bakes this into the JS bundle at build time.
+        # The browser talks to the backend directly on port 5000.
+        VITE_API_URL: http://localhost:5000
+    container_name: openshelf-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - openshelf-net
+    depends_on:
+      backend:
+        condition: service_healthy
+
+# ── Shared network ─────────────────────────────────────────────────────────
+networks:
+  openshelf-net:
+    driver: bridge
+
+# ── Named volumes ──────────────────────────────────────────────────────────
+volumes:
+  uploads_data:
+    driver: local
