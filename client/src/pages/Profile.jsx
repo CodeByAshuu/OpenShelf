@@ -35,13 +35,13 @@ export default function Profile() {
                         Authorization: `Bearer ${token}`,
                     },
                 };
-                const { data } = await axios.get('http://localhost:5000/api/users/profile', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/profile`, config);
                 setUser(data);
                 setFormData({
                     name: data.name,
                     bio: data.bio || '',
                 });
-                setPreviewUrl(data.profileImage ? `http://localhost:5000${data.profileImage}` : '');
+                setPreviewUrl(data.profileImage ? `${import.meta.env.VITE_API_URL}${data.profileImage}` : '');
                 setLoading(false);
             } catch (err) {
                 setError(err.response?.data?.message || 'Failed to fetch profile');
@@ -94,7 +94,7 @@ export default function Profile() {
         }
 
         try {
-            const { data } = await axios.put('http://localhost:5000/api/users/profile', submitData, config);
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/api/users/profile`, submitData, config);
             setUser(data);
             setMessage('Profile updated successfully');
             setEditMode(false);
@@ -225,7 +225,7 @@ export default function Profile() {
                                     onClick={() => {
                                         setEditMode(false);
                                         setFormData({ name: user.name, bio: user.bio || '' });
-                                        setPreviewUrl(user.profileImage ? `http://localhost:5000${user.profileImage}` : '');
+                                        setPreviewUrl(user.profileImage ? `${import.meta.env.VITE_API_URL}${user.profileImage}` : '');
                                         setSelectedFile(null);
                                     }}
                                     className="inline-flex items-center justify-center space-x-2 px-2 py-2 md:px-8 md:py-3 bg-gray-100 text-gray-600 rounded-none hover:bg-gray-200 transition-all duration-300 font-normal tracking-wider uppercase  text-sm md:text-md"

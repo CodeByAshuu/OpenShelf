@@ -2,7 +2,20 @@
 client/node_modules/
 server/node_modules/
 
-
-# Ignore environment files
+# Ignore environment files (never commit secrets)
 client/.env
 server/.env
+
+# Build output
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
