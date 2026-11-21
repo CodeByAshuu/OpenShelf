@@ -1,0 +1,30 @@
+---
+# ==============================================================================
+# OpenShelf - Non-sensitive Application and Infrastructure Variables
+# ==============================================================================
+
+# Application paths and system user
+app_name: openshelf
+app_dir: /opt/openshelf
+app_user: ubuntu
+app_group: ubuntu
+
+# Network Ports
+server_port: 5000
+client_port: 80
+
+# Environment Mode
+node_env: production
+
+# Frontend API URL
+# Points browser API requests to the public EC2 host
+vite_api_url: "http://{{ ansible_host }}:{{ server_port }}"
+
+# Deployment source:
+#   "local" : Syncs code from local repository (default, includes all unpushed devops changes)
+#   "git"   : Clones repository from GitHub
+app_deploy_method: "local"
+
+# Git Repository configuration (used if app_deploy_method == "git")
+repo_url: "https://github.com/CodeByAshuu/OpenShelf.git"
+repo_branch: "devops"

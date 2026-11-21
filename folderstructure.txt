@@ -32,3 +32,8 @@ ebook-downloader/
 │
 ├── README.md
 └── .gitignore
+│
+└── devops/
+    ├── terraform/
+    ├── ansible/
+    └── nagios/

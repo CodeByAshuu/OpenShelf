@@ -1,0 +1,9 @@
+# ==============================================================================
+# OpenShelf Docker Compose Override
+# Injects deployment-specific configuration without editing docker-compose.yml
+# ==============================================================================
+services:
+  frontend:
+    build:
+      args:
+        VITE_API_URL: "{{ vite_api_url }}"

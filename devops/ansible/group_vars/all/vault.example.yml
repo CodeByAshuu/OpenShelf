@@ -1,0 +1,26 @@
+---
+# ==============================================================================
+# OpenShelf - Secrets Template
+# ==============================================================================
+# INSTRUCTIONS:
+# 1. Copy this file to: group_vars/all/vault.yml
+#    cp group_vars/all/vault.example.yml group_vars/all/vault.yml
+#
+# 2. Fill in your real MongoDB Atlas and Cloudinary credentials.
+#
+# 3. Encrypt the file using Ansible Vault:
+#    ansible-vault encrypt group_vars/all/vault.yml
+#
+# Note: 'group_vars/all/vault.yml' is ignored by Git to avoid leaking secrets.
+# ==============================================================================
+
+# JWT secret key for signing user authentication tokens
+vault_jwt_secret: "CHANGE_ME_USE_A_STRONG_RANDOM_SECRET"
+
+# MongoDB Atlas connection string
+vault_mongodb_uri: "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority"
+
+# Cloudinary credentials for media upload
+vault_cloudinary_cloud_name: "your_cloud_name"
+vault_cloudinary_api_key: "your_api_key"
+vault_cloudinary_api_secret: "your_api_secret"

@@ -1,0 +1,5 @@
+---
+- name: Restart OpenShelf
+  ansible.builtin.systemd:
+    name: openshelf
+    state: restarted
