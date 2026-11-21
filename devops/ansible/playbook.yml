@@ -22,3 +22,9 @@
         - openshelf
         - app
         - deploy
+
+    - role: nagios
+      tags:
+        - nagios
+        - monitoring
+

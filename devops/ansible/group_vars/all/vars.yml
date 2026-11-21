@@ -28,3 +28,21 @@ app_deploy_method: "local"
 # Git Repository configuration (used if app_deploy_method == "git")
 repo_url: "https://github.com/CodeByAshuu/OpenShelf.git"
 repo_branch: "devops"
+
+# ==============================================================================
+# Nagios Monitoring Configuration & Resource Thresholds
+# ==============================================================================
+nagios_port: 8080
+nagios_admin_user: "nagiosadmin"
+nagios_notification_email: "admin@openshelf.local"
+
+# System Resource Monitoring Thresholds
+nagios_cpu_warn: "5.0,4.0,3.0"
+nagios_cpu_crit: "10.0,8.0,6.0"
+
+nagios_mem_warn: 80
+nagios_mem_crit: 90
+
+nagios_disk_warn: "20%"
+nagios_disk_crit: "10%"
+

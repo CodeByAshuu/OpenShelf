@@ -32,3 +32,8 @@ output "security_group_id" {
   description = "Security group ID."
   value       = aws_security_group.openshelf.id
 }
+
+output "nagios_url" {
+  description = "Nagios Web Interface URL."
+  value       = "http://${aws_instance.openshelf.public_ip}:8080/nagios4/"
+}

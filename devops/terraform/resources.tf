@@ -74,6 +74,15 @@ resource "aws_security_group" "openshelf" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Nagios Monitoring Web Dashboard – restricted to operator IP only
+  ingress {
+    description = "Nagios Web Interface (operator only)"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = [var.my_public_ip]
+  }
+
   # All egress allowed (pulling Docker images, MongoDB Atlas, Cloudinary, apt)
   egress {
     description = "All outbound"

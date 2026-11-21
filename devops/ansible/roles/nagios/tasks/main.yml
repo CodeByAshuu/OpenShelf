@@ -1,0 +1,153 @@
+---
+# ==============================================================================
+# Role: Nagios - Core Monitoring & Apache Web UI Configuration
+# ==============================================================================
+
+- name: Install Nagios Core, CGI, and monitoring plugins packages
+  ansible.builtin.apt:
+    name:
+      - nagios4
+      - nagios4-cgi
+      - nagios4-core
+      - monitoring-plugins
+      - monitoring-plugins-basic
+      - monitoring-plugins-standard
+      - apache2
+      - apache2-utils
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Configure Apache to listen exclusively on dedicated Nagios port
+  ansible.builtin.template:
+    src: ports.conf.j2
+    dest: /etc/apache2/ports.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart Apache
+
+- name: Deploy Apache VirtualHost for Nagios
+  ansible.builtin.template:
+    src: nagios_vhost.conf.j2
+    dest: /etc/apache2/sites-available/nagios.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart Apache
+
+- name: Disable default Apache site on port 80
+  ansible.builtin.command:
+    cmd: a2dissite 000-default.conf
+  register: a2dissite_out
+  changed_when: "'Site 000-default disabled' in a2dissite_out.stdout"
+  failed_when: false
+  notify: Restart Apache
+
+- name: Enable Nagios Apache site and required modules
+  ansible.builtin.command:
+    cmd: "{{ item }}"
+  loop:
+    - a2ensite nagios.conf
+    - a2enmod cgi
+    - a2enmod rewrite
+    - a2enmod authz_groupfile
+    - a2enconf nagios4-cgi
+  register: a2en_out
+  changed_when: "'Enabling' in a2en_out.stdout"
+  failed_when: false
+  notify: Restart Apache
+
+- name: Create or update Nagios admin authentication credentials
+  ansible.builtin.command:
+    cmd: "htpasswd -bc /etc/nagios4/htpasswd.users {{ nagios_admin_user }} {{ vault_nagios_admin_password }}"
+  no_log: true
+  changed_when: true
+
+- name: Set secure permissions on Nagios htpasswd file
+  ansible.builtin.file:
+    path: /etc/nagios4/htpasswd.users
+    owner: root
+    group: www-data
+    mode: "0640"
+
+- name: Add nagios user to docker group
+  ansible.builtin.user:
+    name: nagios
+    groups: docker
+    append: true
+  notify: Restart Nagios
+
+- name: Ensure custom Nagios plugins directory exists
+  ansible.builtin.file:
+    path: /usr/lib/nagios/plugins
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy custom Nagios check plugins
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../../devops/nagios/plugins/{{ item }}"
+    dest: "/usr/lib/nagios/plugins/{{ item }}"
+    owner: root
+    group: root
+    mode: "0755"
+  loop:
+    - check_docker.sh
+    - check_mem.sh
+    - check_service.sh
+  notify: Restart Nagios
+
+- name: Ensure Nagios conf.d directory exists
+  ansible.builtin.file:
+    path: /etc/nagios4/conf.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy Nagios object configuration files
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../../devops/nagios/conf.d/{{ item }}"
+    dest: "/etc/nagios4/conf.d/{{ item }}"
+    owner: nagios
+    group: nagios
+    mode: "0644"
+  loop:
+    - templates.cfg
+    - contacts.cfg
+    - commands.cfg
+    - openshelf_server.cfg
+    - openshelf_services.cfg
+  notify: Restart Nagios
+
+- name: Verify Nagios configuration validity
+  ansible.builtin.command:
+    cmd: nagios4 -v /etc/nagios4/nagios.cfg
+  register: nagios_verify
+  changed_when: false
+  failed_when: nagios_verify.rc != 0
+
+- name: Ensure Nagios service is enabled and started
+  ansible.builtin.systemd:
+    name: nagios4
+    enabled: true
+    state: started
+
+- name: Ensure Apache web server is enabled and started
+  ansible.builtin.systemd:
+    name: apache2
+    enabled: true
+    state: started
+
+- name: Display Nagios access details
+  ansible.builtin.debug:
+    msg:
+      - "=========================================================="
+      - " Nagios Core Monitoring Ready!                             "
+      - "=========================================================="
+      - "Dashboard URL : http://{{ ansible_host }}:{{ nagios_port }}/nagios4/"
+      - "Admin Username: {{ nagios_admin_user }}"
+      - "Auth Security : HTTP Basic Auth (htpasswd) + AWS SG restricted"
+      - "=========================================================="

@@ -24,3 +24,7 @@ vault_mongodb_uri: "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<d
 vault_cloudinary_cloud_name: "your_cloud_name"
 vault_cloudinary_api_key: "your_api_key"
 vault_cloudinary_api_secret: "your_api_secret"
+
+# Nagios Web Console Admin Password
+vault_nagios_admin_password: "CHANGE_ME_NAGIOS_ADMIN_PASSWORD"
+
