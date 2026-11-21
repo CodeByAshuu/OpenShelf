@@ -1,0 +1,30 @@
+---
+- name: Configure EC2 Server and Deploy OpenShelf
+  hosts: openshelf
+  become: true
+  gather_facts: true
+
+  vars_files:
+    - "{{ playbook_dir }}/group_vars/all/vars.yml"
+    - [
+        "{{ playbook_dir }}/group_vars/all/vault.yml",
+        "{{ playbook_dir }}/group_vars/all/vault.example.yml"
+      ]
+
+  roles:
+    - role: docker
+      tags:
+        - docker
+        - system
+
+    - role: openshelf
+      tags:
+        - openshelf
+        - app
+        - deploy
+
+    - role: nagios
+      tags:
+        - nagios
+        - monitoring
+

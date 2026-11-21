@@ -1,0 +1,125 @@
+---
+# ==============================================================================
+# Role: OpenShelf - Application Deployment & Service Management
+# ==============================================================================
+
+- name: Create base application directory
+  ansible.builtin.file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: "0755"
+
+- name: Ensure uploads directory exists with write permissions
+  ansible.builtin.file:
+    path: "{{ app_dir }}/server/uploads"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: "0775"
+
+# --- Deployment: Local workspace synchronization ---
+- name: Synchronize project files from local workspace
+  ansible.posix.synchronize:
+    src: "{{ playbook_dir }}/../../"
+    dest: "{{ app_dir }}/"
+    delete: false
+    recursive: true
+    rsync_opts:
+      - "--exclude=node_modules"
+      - "--exclude=.git"
+      - "--exclude=dist"
+      - "--exclude=.terraform"
+      - "--exclude=*.tfstate*"
+      - "--exclude=server/.env"
+      - "--exclude=client/.env"
+      - "--exclude=devops/ansible/group_vars/all/vault.yml"
+  when: app_deploy_method == "local"
+  notify: Restart OpenShelf
+
+# --- Deployment: Git clone alternative ---
+- name: Clone OpenShelf repository from GitHub
+  ansible.builtin.git:
+    repo: "{{ repo_url }}"
+    dest: "{{ app_dir }}"
+    version: "{{ repo_branch }}"
+    force: true
+  when: app_deploy_method == "git"
+  notify: Restart OpenShelf
+
+- name: Set correct ownership across application directory
+  ansible.builtin.file:
+    path: "{{ app_dir }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    recurse: true
+
+- name: Deploy server environment configuration (.env)
+  ansible.builtin.template:
+    src: server.env.j2
+    dest: "{{ app_dir }}/server/.env"
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: "0600"
+  no_log: true
+  notify: Restart OpenShelf
+
+- name: Deploy docker-compose override for frontend build
+  ansible.builtin.template:
+    src: docker-compose.override.yml.j2
+    dest: "{{ app_dir }}/docker-compose.override.yml"
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: "0644"
+  notify: Restart OpenShelf
+
+- name: Deploy systemd service unit for boot persistence
+  ansible.builtin.template:
+    src: openshelf.service.j2
+    dest: /etc/systemd/system/openshelf.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart OpenShelf
+
+- name: Build and launch OpenShelf container stack
+  ansible.builtin.command:
+    cmd: docker compose up -d --build --remove-orphans
+    chdir: "{{ app_dir }}"
+  register: compose_output
+  changed_when: "'Created' in compose_output.stdout or 'Recreated' in compose_output.stdout or 'Building' in compose_output.stdout or 'Started' in compose_output.stdout"
+
+- name: Enable and start OpenShelf systemd service
+  ansible.builtin.systemd:
+    name: openshelf
+    enabled: true
+    state: started
+    daemon_reload: true
+
+- name: Wait for backend health check endpoint
+  ansible.builtin.uri:
+    url: "http://localhost:{{ server_port }}/health"
+    status_code: 200
+  register: backend_check
+  until: backend_check.status == 200
+  retries: 15
+  delay: 4
+
+- name: Verify frontend is responding
+  ansible.builtin.uri:
+    url: "http://localhost:{{ client_port }}/"
+    status_code: 200
+  register: frontend_check
+
+- name: Display deployment summary
+  ansible.builtin.debug:
+    msg:
+      - "=========================================================="
+      - " OpenShelf Deployment Complete!                          "
+      - "=========================================================="
+      - "Frontend URL  : http://{{ ansible_host }}:{{ client_port }}"
+      - "Backend API   : http://{{ ansible_host }}:{{ server_port }}"
+      - "Backend Health: http://{{ ansible_host }}:{{ server_port }}/health"
+      - "Service Status: active (managed by systemd)"
+      - "=========================================================="

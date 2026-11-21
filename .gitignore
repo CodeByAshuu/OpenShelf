@@ -19,3 +19,36 @@ Thumbs.db
 
 # Docker
 .dockerignore
+
+# ── Terraform ──────────────────────────────────────────────────────────────
+# State files (may contain secrets – never commit)
+devops/terraform/terraform.tfstate
+devops/terraform/terraform.tfstate.backup
+devops/terraform/*.tfstate.*
+
+# Local working directory (providers, modules, etc.)
+devops/terraform/.terraform/
+
+# Crash log
+devops/terraform/crash.log
+
+# Variable files that may hold secrets
+devops/terraform/*.tfvars
+devops/terraform/*.tfvars.json
+
+# DO commit the lock file (reproducible provider versions)
+!devops/terraform/.terraform.lock.hcl
+
+# ── SSH / credentials ──────────────────────────────────────────────────────
+*.pem
+*_rsa
+*_ed25519
+# Public keys are safe to commit if desired, but exclude private ones
+!*.pub
+
+# ── Ansible ────────────────────────────────────────────────────────────────
+devops/ansible/*.retry
+devops/ansible/group_vars/all/vault.yml
+devops/ansible/vault_password*
+devops/ansible/.ansible/
+

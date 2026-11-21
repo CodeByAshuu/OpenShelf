@@ -1,0 +1,10 @@
+<VirtualHost *:{{ nagios_port }}>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /usr/share/nagios4/htdocs
+
+    # Automatic redirect from root to Nagios dashboard
+    RedirectMatch ^/$ /nagios4/
+
+    ErrorLog ${APACHE_LOG_DIR}/nagios_error.log
+    CustomLog ${APACHE_LOG_DIR}/nagios_access.log combined
+</VirtualHost>
