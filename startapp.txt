@@ -1,0 +1,24 @@
+docker compose up -d
+cd devops/terraform
+terraform apply
+aws ec2 start-instances \
+  --instance-ids i-09f08587d77589ada \
+  --region ap-southeast-2
+
+aws ec2 describe-instances \
+  --instance-ids i-09f08587d77589ada \
+  --region ap-southeast-2 \
+  --query "Reservations[0].Instances[0].[State.Name,PublicIpAddress,PublicDnsName]" \
+  --output table
+
+ssh -i ~/.ssh/openshelf-aws ubuntu@REPLACE_WITH_PUBLIC_IP
+
+
+
+######## CONNECT ANIBLE TO ec2
+cd devops/ansible
+ansible all 
+
+
+
+ 
